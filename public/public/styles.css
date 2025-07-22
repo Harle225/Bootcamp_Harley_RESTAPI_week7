@@ -1,0 +1,60 @@
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.note-buttons {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.note-buttons button {
+  margin-left: 5px;
+}
