@@ -9,25 +9,21 @@ app.use(express.static("public"));
 
 const DATA_FILE = path.join(__dirname, "data.json");
 
-// Helper: Load notes
 const loadNotes = () => {
   if (!fs.existsSync(DATA_FILE)) return [];
   const data = fs.readFileSync(DATA_FILE);
   return JSON.parse(data || "[]");
 };
 
-// Helper: Save notes
 const saveNotes = (notes) => {
   fs.writeFileSync(DATA_FILE, JSON.stringify(notes, null, 2));
 };
 
-// GET all notes
 app.get("/api/notes", (req, res) => {
   const notes = loadNotes();
   res.json(notes);
 });
 
-// POST new note
 app.post("/api/notes", (req, res) => {
   const notes = loadNotes();
   const newNote = { id: Date.now().toString(), ...req.body };
@@ -36,7 +32,6 @@ app.post("/api/notes", (req, res) => {
   res.status(201).json(newNote);
 });
 
-// PUT update note
 app.put("/api/notes/:id", (req, res) => {
   const notes = loadNotes();
   const index = notes.findIndex((note) => note.id === req.params.id);
@@ -47,7 +42,6 @@ app.put("/api/notes/:id", (req, res) => {
   res.json(notes[index]);
 });
 
-// DELETE note
 app.delete("/api/notes/:id", (req, res) => {
   let notes = loadNotes();
   notes = notes.filter((note) => note.id !== req.params.id);
@@ -55,6 +49,8 @@ app.delete("/api/notes/:id", (req, res) => {
   res.status(204).send();
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running at http://0.0.0.0:${PORT}`);
 });
