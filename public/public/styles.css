@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
-  background: #f4f4f4;
+  background: #121212;
+  color: #e0e0e0;
   margin: 0;
   padding: 20px;
 }
@@ -12,6 +13,7 @@ body {
 
 h1 {
   text-align: center;
+  color: #bb86fc;
 }
 
 form {
@@ -25,15 +27,30 @@ textarea {
   margin-bottom: 10px;
   padding: 10px;
   font-size: 1rem;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aaaaaa;
 }
 
 button {
   padding: 10px;
   font-size: 1rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #bb86fc;
+  color: #121212;
   border: none;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #9a67ea;
 }
 
 ul {
@@ -42,11 +59,12 @@ ul {
 }
 
 li {
-  background: white;
+  background: #1f1f1f;
   padding: 15px;
   margin-bottom: 10px;
   position: relative;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(187, 134, 252, 0.2);
 }
 
 .note-buttons {
@@ -57,4 +75,10 @@ li {
 
 .note-buttons button {
   margin-left: 5px;
+  background-color: #3700b3;
+  color: #ffffff;
+}
+
+.note-buttons button:hover {
+  background-color: #6200ee;
 }

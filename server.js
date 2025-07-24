@@ -1,17 +1,17 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
+const DATA_FILE = path.join(__dirname, "data.json");
 
 app.use(express.json());
 app.use(express.static("public"));
 
-const DATA_FILE = path.join(__dirname, "data.json");
-
 const loadNotes = () => {
   if (!fs.existsSync(DATA_FILE)) return [];
-  const data = fs.readFileSync(DATA_FILE);
+  const data = fs.readFileSync(DATA_FILE, "utf-8");
   return JSON.parse(data || "[]");
 };
 
@@ -26,19 +26,28 @@ app.get("/api/notes", (req, res) => {
 
 app.post("/api/notes", (req, res) => {
   const notes = loadNotes();
-  const newNote = { id: Date.now().toString(), ...req.body };
+  const newNote = {
+    id: Date.now().toString(),
+    ...req.body,
+  };
+
   notes.push(newNote);
   saveNotes(notes);
+
   res.status(201).json(newNote);
 });
 
 app.put("/api/notes/:id", (req, res) => {
   const notes = loadNotes();
   const index = notes.findIndex((note) => note.id === req.params.id);
-  if (index === -1) return res.status(404).json({ error: "Note not found" });
+
+  if (index === -1) {
+    return res.status(404).json({ error: "Note not found" });
+  }
 
   notes[index] = { ...notes[index], ...req.body };
   saveNotes(notes);
+
   res.json(notes[index]);
 });
 
@@ -46,11 +55,11 @@ app.delete("/api/notes/:id", (req, res) => {
   let notes = loadNotes();
   notes = notes.filter((note) => note.id !== req.params.id);
   saveNotes(notes);
+
   res.status(204).send();
 });
 
-const PORT = process.env.PORT || 10000;
-
+// Start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running at http://0.0.0.0:${PORT}`);
 });
