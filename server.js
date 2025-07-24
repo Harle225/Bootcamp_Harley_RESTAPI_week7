@@ -59,6 +59,10 @@ app.delete("/api/notes/:id", (req, res) => {
   res.status(204).send();
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Harley's Bootcamp REST API!");
+});
+
 // Start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running at http://0.0.0.0:${PORT}`);
