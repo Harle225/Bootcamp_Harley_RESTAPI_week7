@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, "data.json");
 
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 const loadNotes = () => {
   if (!fs.existsSync(DATA_FILE)) return [];
@@ -57,10 +57,6 @@ app.delete("/api/notes/:id", (req, res) => {
   saveNotes(notes);
 
   res.status(204).send();
-});
-
-app.get("/", (req, res) => {
-  res.send("Welcome to Harley's Bootcamp REST API!");
 });
 
 // Start server
