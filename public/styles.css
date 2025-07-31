@@ -1,0 +1,66 @@
+body {
+  font-family: sans-serif;
+  background: #0d0d0d; /* dark background */
+  color: #f0e6ff; /* light purple text */
+  margin: 0;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #1a1a1a; /* dark grey/black container */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  background: #2e003e; /* deep purple */
+  color: #f0e6ff;
+  border: 1px solid #8a2be2;
+  border-radius: 5px;
+}
+
+form button {
+  padding: 0.8rem 1.5rem;
+  background: #8000ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #a64dff;
+}
+
+.note {
+  background: #2a003f;
+  color: #f0e6ff;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border-left: 5px solid #8000ff;
+}
+
+.note-actions {
+  margin-top: 0.5rem;
+}
+
+.note-actions button {
+  background: #6600cc;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.note-actions button:hover {
+  background: #9933ff;
+}
